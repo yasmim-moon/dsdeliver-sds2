@@ -6,8 +6,8 @@ import { OrderLocationData } from './types';
 import React, {useState} from 'react';
 
 const initialPosition = {
-    latt: -18.9110558,
-    long: -48.26201
+    lat: -18.9110558,
+    lng: -48.26201
 
 }
 
@@ -15,8 +15,8 @@ type Place={
     label?: string;
     value?: string
     position:{
-        latt: number;
-        long: number;
+        lat: number;
+        lng: number;
     }
 }
 
@@ -48,8 +48,8 @@ function OrderLocation({onChangeLocation}: Props ) {
       const handleChangeSelect = (place: Place) => {
           setAddress(place);
           onChangeLocation({
-            latitude: place.position.latt,
-            longitude: place.position.long,
+            latitude: place.position.lat,
+            longitude: place.position.lng,
             address: place.label!
        });
       };
@@ -72,7 +72,7 @@ function OrderLocation({onChangeLocation}: Props ) {
                 <MapContainer 
                   center={address.position} 
                   zoom={15} 
-                  key={address.position.latt}
+                  key={address.position.lat}
                   scrollWheelZoom={false}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
