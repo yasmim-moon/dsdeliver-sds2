@@ -9,11 +9,12 @@ type Props = {
 }
 
 
-function ProductCard({ product, oneSelectProduct, inSelected}: Props){
+function ProductCard({ product, oneSelectProduct, isSelected}: Props){
     return(
         <div 
-          className={`orders-card-container` $(isSelected ? `selected`)}>
-          oneClick={( => onSelectProduct(product)}
+          className={`orders-card-container ${isSelected} ? 'selected' : '' }`}
+          onClick={() => oneSelectProduct(product)}
+          >
            <h3 className="order-card-title">
                {product.name}
                </h3>  
@@ -29,7 +30,7 @@ function ProductCard({ product, oneSelectProduct, inSelected}: Props){
                <p>
                {product.description}
 
-Uma deliciosa combinação de Linguiça Calabresa, rodelas de cebolas frescas, azeitonas pretas, mussarela, polpa de tomate, orégano e massa especial.  
+               Uma deliciosa combinação de Linguiça Calabresa, rodelas de cebolas frescas, azeitonas pretas, mussarela, polpa de tomate, orégano e massa especial.  
                </p>
                </div>
         </div>

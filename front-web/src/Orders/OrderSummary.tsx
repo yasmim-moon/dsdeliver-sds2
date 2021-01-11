@@ -11,7 +11,6 @@ function OrderSummary({amount, totalPrice}: Props){
     return(
        <div className="order-summary-container">
            <div className="order-summary-content">
-               <div>
                <span className="amount-selected-contaner">
                    <strong className="amount-selected" >amount</strong>
                    PEDIDOS SELECIONADOS
@@ -25,6 +24,7 @@ function OrderSummary({amount, totalPrice}: Props){
                    VALOR TOTAL
                </span>
                </div>
+               <div>
 
                 <button className="order-summary-make">
                     FAZER PEDIDO

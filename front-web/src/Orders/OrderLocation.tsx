@@ -1,9 +1,10 @@
-import React from 'react';
+
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import AsyncSelect from 'react-select/async';
 import { fetchLocalMapBox } from '../api';
-import { type } from 'os';
-import { OrderLocationdata } from './types';
+//import { type } from 'os';
+import { OrderLocationData } from './types';
+import React, {useState} from 'react';
 
 const initialPosition = {
     lat: -18.9110558,
@@ -16,16 +17,16 @@ type Place={
     value?: string
     position:{
         lat: number;
-        lng: number;
+        long: number;
     }
 }
 
 type Props = {
-    onChangeLocation: (location: OrderLocationdata) => void;
+    onChangeLocation: (location: OrderLocationData) => void;
 }
 function OrderLocation({onChangeLocation}: Props ) {
-    const [andress, setAddress] = useState<Place>({
-        position: initialPosition
+    const [address, setAddress] = useState<Place>({
+        position: initialPosition 
     });
     const loadOptions = async (inputValue: string, callback: (places: Place[]) => void) => {
         const response = await fetchLocalMapBox(inputValue);
@@ -46,10 +47,10 @@ function OrderLocation({onChangeLocation}: Props ) {
       };
       
       const handleChangeSelect = (place: Place) => {
-        setAddress(place);
+          setAddress(place);
           onChangeLocation({
             latitude: place.position.lat,
-            longitude: place.position.lng,
+            longitude: place.position.long,
             address: place.label!
        });
       };
@@ -72,7 +73,7 @@ function OrderLocation({onChangeLocation}: Props ) {
                 <MapContainer 
                   center={address.position} 
                   zoom={15} 
-                  key={addresss.position.lat}
+                  key={address.position.lat}
                   scrollWheelZoom={false}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -81,14 +82,16 @@ function OrderLocation({onChangeLocation}: Props ) {
                     <Marker position={address.position}>
                         <Popup>
                            {address.label}
+                        </Popup>
                     </Marker>
                 </MapContainer>
-            </div>
+               </div>
         </div>
 
 
 
     )
 }
-
 export default OrderLocation;
+
+
