@@ -1,11 +1,11 @@
 import React from 'react';
-import { format } from 'path';
+//import { format } from 'path';
 import { formatPrice } from './helpers';
 
 type Props ={
     amount: number;
     totalPrice: number;
-    onSubmit:() => void
+    onSubmit:() => void;
 }
 function OrderSummary({amount, totalPrice}: Props){
     return(
@@ -18,7 +18,7 @@ function OrderSummary({amount, totalPrice}: Props){
                <span className="order-summary-total">
                    <strong 
                       className="amount-selected">
-                      oneClick={onSubmit}
+                      oneClick={onsubmit}
                        {formatPrice(totalPrice)}
                    </strong>
                    VALOR TOTAL
