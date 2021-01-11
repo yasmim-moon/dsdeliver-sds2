@@ -9,7 +9,7 @@ type Props ={
     selectedProducts:  Product[];
 }
 
-function ProductsList({ products, oneSelectProduct} : Props){
+function ProductsList({ products, selectedProducts, oneSelectProduct} : Props){
     return(
         <div className="orders-list-container">
           <div className="orders-list-items">
